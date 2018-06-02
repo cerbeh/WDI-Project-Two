@@ -1,0 +1,12 @@
+{
+  "name": "WDI-Project-Two",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:cerbeh/WDI-Project-Two.git",
+  "author": "Martin Allgood <martintallgood@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}
