@@ -1,8 +1,12 @@
 const express        = require('express');
 const ejsLayouts     = require('express-ejs-layouts');
-// const bodyParser     = require('body-parser');
-// const methodOverride = require('method-override');
-// const mongoose       = require('mongoose');
+const bodyParser     = require('body-parser');
+const methodOverride = require('method-override');
+const mongoose       = require('mongoose');
+
+const databaseURI ='mongodb://localhost/WDI-Project-Two';
+
+mongoose.connect(databaseURI);
 
 const app = express();
 const router = require('./config/routes');
@@ -13,11 +17,15 @@ app.use(ejsLayouts);
 
 app.use(express.static(`${__dirname}/public`));
 
-// app.get('/venue', (req, res) => res.render('venues/show', {
-//   venue: 'Name',
-//   location: 'somewhere',
-//   rating: 4.5
-// }));
+app.use(bodyParser.urlencoded({ extended: true}));
+
+app.use(methodOverride((req) => {
+  if(req.body && typeof req.body === 'object' && '_method' in req.body) {
+    const method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 app.use(router);
 

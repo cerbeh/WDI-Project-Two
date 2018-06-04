@@ -1,4 +1,16 @@
 body {
   background: red; }
 
+a.test {
+  color: papayawhip;
+  background-color: chartreuse;
+  border: 2px solid saddleBrown; }
+
+h2.header {
+  padding: 10px;
+  margin: 5px; }
+
+body div.container {
+  background: peachpuff; }
+
 /*# sourceMappingURL=style.css.map */

@@ -10,4 +10,8 @@ router.get('/', (req, res) => res.render('index', {
 router.route('/venues')
   .get(venueController.index);
 
+router.route('/venues/new')
+  .get(venueController.new);
+  
+
 module.exports = router;
