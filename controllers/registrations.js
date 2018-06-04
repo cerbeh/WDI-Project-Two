@@ -1,7 +1,8 @@
 const User = require('../models/user');
 
 function userNew(req, res) {
-  res.render('registration/new');
+  const template = User.schema.obj;
+  res.render('registration/new', {template});
 }
 
 function userCreate(req, res){
@@ -9,7 +10,7 @@ function userCreate(req, res){
     .create(req.body)
     .then((user)=>{
       console.log(user);
-      res.redirect('/');
+      res.redirect('/users');
     })
     .catch((err) => {
       console.log(err);

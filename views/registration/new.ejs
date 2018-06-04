@@ -1,29 +1,12 @@
-<h3>New User</h3>
+<h2>New User</h2>
 
-<form method="POST" action="/register">
-  <div class="field">
-    <label class ="label" for="username">Username</label>
-    <div class="control">
-      <input type="text" class="input" name="username" id="username">
-    </div>
-  </div>
-  <div class="field">
-    <label class ="label" for="email">Email</label>
-    <div class="control">
-      <input type="text" class="input" name="email" id="email">
-    </div>
-  </div>
-  <div class="field">
-    <label class ="label" for="password">Password</label>
-    <div class="control">
-      <input type="password" class="input" name="password" id="password">
-    </div>
-  </div>
-  <div class="field">
-    <label class ="label" for="passwordConfirmation">Password Confirmation</label>
-    <div class="control">
-      <input type="password" class="input" name="passwordConfirmation" id="passwordConfirmation">
-    </div>
+<form action="/registration" method="POST">
+  <% Object.keys(template).forEach(key => { %>
+    <div class="field">
+      <label class="label"> <%=key.toUpperCase()%></label>
+      <div class="control">
+        <input type="text" class="input" name="<%= key %>">
+  <% }) %>
   </div>
   <button class="button">Register</button>
 </form>
