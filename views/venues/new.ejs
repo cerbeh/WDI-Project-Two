@@ -3,7 +3,7 @@
 <form action="/venues" method="post">
   <% Object.keys(template).forEach(key => { %>
     <div class="field">
-      <label class="label"><%= key%></label>
+      <label class="label"><%= key.toUpperCase()%></label>
       <div class="control">
       <% if (key === 'description') { %>
         <textarea name="<%= key %>" rows="10" columns="80"></textarea>
