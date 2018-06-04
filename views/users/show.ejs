@@ -1,17 +1,26 @@
 <h2>User Profile Page</h2>
 
 <div class="columns is-multiline is-mobile">
-  <div class="column is-half">
+  <div class="column">
     <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
   </div>
-  <div class="column is-half">
-    <ul>
-      <li>Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%></li>
-      <li>Date of Birth: <%= user.profile['DOB']%></li>
-      <li>Interests: <%= user.profile['interests']%></li>
-    </ul>
+  <div class="columns">
+      <ul>
+        <li>
+          <div class="column is-one-third">
+            Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%>
+          </div>
+        </li>
+        <li>
+          <div class="column is-one-third">
+            Date of Birth: <%= user.profile['DOB']%>
+          </div>
+        </li>
+        <li>
+          <div class="column is-one-third">
+            Interests: <%= user.profile['interests']%>
+          </div>
+        </li>
+      </ul>
   </div>
 </div>
-<%= user %>
-<%= user.profile %>
-<%= user.profile['firstName'] %>
