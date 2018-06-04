@@ -41,7 +41,8 @@ router.route('/venues/new')
   .get(venueController.new);
 router.route('/venues/:id')
   .get(venueController.show)
-  .put(venueController.update);
+  .put(venueController.update)
+  .delete(venueController.delete);
 router.route('/venues/:id/edit')
   .get(venueController.edit);
 

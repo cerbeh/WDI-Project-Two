@@ -7,3 +7,7 @@
 </p>
 
 <a href="/venues/<%= venue._id %>/edit">Edit</a>
+<form action="/venues/<%= venue.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button name="button">Delete</button>
+</form>

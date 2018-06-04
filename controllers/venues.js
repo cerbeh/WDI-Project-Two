@@ -50,11 +50,22 @@ function venueUpdate(req, res) {
     });
 }
 
+function venueDelete(req, res) {
+  Venue
+    .findById(req.params.id)
+    .exec()
+    .then(venue => {
+      venue.remove();
+      return res.redirect('/venues');
+    });
+}
+
 module.exports = {
   index: venueIndex,
   new: venueNew,
   create: venueCreate,
   show: venueShow,
   edit: venueEdit,
-  update: venueUpdate
+  update: venueUpdate,
+  delete: venueDelete
 };
