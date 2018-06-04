@@ -8,10 +8,17 @@ router.get('/', (req, res) => res.render('index', {
 }));
 
 router.route('/venues')
-  .get(venueController.index);
+  .get(venueController.index)
+  .post(venueController.create);
 
 router.route('/venues/new')
   .get(venueController.new);
-  
+
+router.route('/venues/:id')
+  .get(venueController.show)
+  .put(venueController.update);
+
+router.route('/venues/:id/edit')
+  .get(venueController.edit);
 
 module.exports = router;

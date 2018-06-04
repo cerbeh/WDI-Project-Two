@@ -1,10 +1,32 @@
-<h2 class="header"><%= name %></h2>
+<h2 class="header"><%= venues.name %></h2>
 <div class="tile is-ancestor">
   <!-- All other tile elemnts -->
   <div class="tile">
-    <img src="<%= image %>" alt="<%= name %>">
-    <a class="test" href="#">Where to find me</a>
-    <p><%= location %></p>
+    <img src="<%= venues.image %>" alt="<%= venues.name %>">
   </div>
 
+</div>
+
+<div class="columns is-multiline">
+  <% venues.forEach(venue => { %>
+    <div class="column is-one-third-desktop is-half-tablet">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="<%= venue.image %>" alt="<%= venue.name %>">
+          </figure>
+        </div>
+        <div class="card-content has-background-danger">
+          <div class="content">
+            <h4 class="title is-4">
+              <a href="/venues/<%=venue._id%>"><%= venue.name %></a>
+              </h4>
+              <p class="venue-description">
+              <%= venue.description %>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% }) %>
 </div>

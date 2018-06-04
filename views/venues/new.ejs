@@ -1,1 +1,24 @@
 <h3>Create a new Venue</h3>
+
+<form action="/venues" method="post">
+  <% Object.keys(template).forEach(key => { %>
+    <div class="field">
+      <label class="label"><%= key%></label>
+      <div class="control">
+      <% if (key === 'description') { %>
+        <textarea name="<%= key %>" rows="10" columns="80"></textarea>
+        <% } else { %>
+          <input type="text" class="input" name="<%= key %>">
+        <% } %>
+      </div>
+    </div>
+  <% }) %>
+  <div class="field is-grouped">
+    <div class="control">
+      <button class="button is-link">Submit</button>
+    </div>
+    <div class="control">
+      <button class="button is-text">Cancel</button>
+    </div>
+  </div>
+</form>

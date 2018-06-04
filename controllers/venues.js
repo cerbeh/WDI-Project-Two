@@ -1,20 +1,17 @@
 const Venue = require('../models/venue');
 
 function venueIndex(req, res) {
-  console.log('hello');
   Venue
     .find()
     .exec()
-    .then(res.render('venues/index', {
-      name: 'The Flying Murray',
-      capacity: 25,
-      location: 'Flat One',
-      image: 'https://www.fillmurray.com/400/300'
-    }));
+    .then((venues) => {
+      res.render('venues/index', {venues});
+    });
 }
 
 function venueNew(req, res) {
-  res.render('venues/new');
+  const template = Venue.schema.obj;
+  res.render('venues/new', {template});
 }
 
 function venueCreate(req, res) {
@@ -25,8 +22,39 @@ function venueCreate(req, res) {
     });
 }
 
+function venueShow(req, res) {
+  Venue
+    .findById(req.params.id)
+    .exec()
+    .then((venue) => {
+      res.render('venues/show', {venue});
+    });
+}
+
+function venueEdit(req, res) {
+  Venue
+    .findById(req.params.id)
+    .exec()
+    .then((venue) => {
+      res.render('venues/edit', {venue});
+    });
+}
+
+function venueUpdate(req, res) {
+  Venue
+    .findById(req.params.id)
+    .update(req.body)
+    .exec()
+    .then((venue) => {
+      return res.redirect(`/venues/${venue._id}`);
+    });
+}
+
 module.exports = {
   index: venueIndex,
   new: venueNew,
-  create: venueCreate
+  create: venueCreate,
+  show: venueShow,
+  edit: venueEdit,
+  update: venueUpdate
 };

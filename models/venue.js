@@ -5,7 +5,8 @@ const venueSchema = new mongoose.Schema({
   name: String,
   capacity: Number,
   location: String,
-  image: String
+  image: String,
+  description: String
 
 });
 

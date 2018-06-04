@@ -13,3 +13,14 @@ h2.header {
 body div.container {
   background: peachpuff;
 }
+textarea {
+  resize: none;
+  width: 100%;
+  font-size: 20px;
+}
+p.venue-description {
+  height: 50px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
