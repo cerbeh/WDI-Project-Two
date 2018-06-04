@@ -20,8 +20,11 @@ router.route('/users')
   .get(usersController.index);
 
 router.route('/users/:id')
-  .get(usersController.show);
+  .get(usersController.show)
+  .put(usersController.update);
 
+router.route('/users/:id/edit')
+  .get(usersController.edit);
 
 /*
 #####################################
@@ -48,6 +51,7 @@ router.route('/venues/:id')
   .delete(venueController.delete);
 router.route('/venues/:id/edit')
   .get(venueController.edit);
+
 
 
 

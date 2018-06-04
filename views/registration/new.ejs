@@ -16,7 +16,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input type="text" class="input" name="<%= element %>">
+                  <input type="text" class="input" name="<%=key%>.<%= element %>">
                 </div>
               </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input type="date" class="input" name="<%= element %>">
+                  <input type="date" class="input" name="<%=key %>.<%= element %>">
                 </div>
               </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <textarea name="<%= element %>" rows="10" columns="80"></textarea>
+                  <textarea name="<%=key %>.<%= element %>" rows="10" columns="80"></textarea>
                 </div>
               </div>
             </div>

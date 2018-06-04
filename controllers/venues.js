@@ -45,10 +45,20 @@ function venueUpdate(req, res) {
     .findById(req.params.id)
     .update(req.body)
     .exec()
-    .then((venue) => {
-      return res.redirect(`/venues/${venue._id}`);
+    .then(() => {
+      return res.redirect(`/venues/${req.params.id}`);
     });
 }
+
+// function beanbagsUpdate(req, res){
+//  BeanBag
+//    .findById(req.params.id)
+//    .update(req.body)
+//    .exec()
+//    .then((beanbag) => {
+//      return res.redirect(`/beanbags/${req.params.id}`);
+//    });
+// }
 
 function venueDelete(req, res) {
   Venue
