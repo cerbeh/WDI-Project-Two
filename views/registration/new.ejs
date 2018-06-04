@@ -6,45 +6,52 @@
       <label class="label"><%= key.toUpperCase()%></label>
       <div class="control">
       <% if (key === 'profile') { %>
-
-
-        <div class="field is-horizontal">
+        <% Object.keys(template.profile).forEach((element) => { %>
+          <div class="field is-horizontal">
           <div class="field-label is-normal">
-            <label class="label">Question</label>
+          <label class="label"><%= element.toUpperCase() %></label>
           </div>
+          <% if (element === 'firstName' || element === 'secondName' || element === 'image') { %>
 
-          <div class="field-body">
-            <div class="field">
-              <div class="control">
-                <input type="text" class="input" name="<%= element %>">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input type="text" class="input" name="<%= element %>">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-
-        <% Object.keys(template.profile).forEach((element) => { %>
-          <label class="label"><%= element.toUpperCase() %></label>
-          <% if (element === 'firstName' || element === 'secondName' || element === 'image') { %>
-
-            <input type="text" class="input" name="<%= element %>">
 
           <% } else if (element === 'DOB') { %>
 
-            <input type="date" class="input" name="<%= element %>">
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input type="date" class="input" name="<%= element %>">
+                </div>
+              </div>
+            </div>
+          </div>
 
           <% } else { %>
 
-            <textarea name="<%= element %>" rows="10" columns="80"></textarea>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <textarea name="<%= element %>" rows="10" columns="80"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <% }%>
         <% }) %>
       </div>
     </div>
   <% } else if(key === 'password') { %>
-    <input type="text" class="input" name="<%= key %>">
+    <input type="password" class="input" name="<%= key %>">
     <label class="label">PASSWORD CONFIRMATION</label>
-    <input type="text" class="input" name="password-confirmation">
+    <input type="password" class="input" name="passwordConfirmation">
     <% } else { %>
       <input type="text" class="input" name="<%= key %>">
   <% } %>

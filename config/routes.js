@@ -19,6 +19,9 @@ router.get('/', (req, res) => res.render('index', {
 router.route('/users')
   .get(usersController.index);
 
+router.route('/users/:id')
+  .get(usersController.show);
+
 
 /*
 #####################################

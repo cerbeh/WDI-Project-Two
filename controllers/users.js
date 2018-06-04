@@ -9,6 +9,18 @@ function userIndex(req, res) {
     });
 }
 
+function userShow(req, res) {
+  User
+    .findById(req.params.id)
+    .populate('profile')
+    .exec()
+    .then(user => {
+      res.render('users/show', {user});
+    });
+
+}
+
 module.exports = {
-  index: userIndex
+  index: userIndex,
+  show: userShow
 };
