@@ -1,0 +1,12 @@
+<h2>Event Index</h2>
+
+<a href="/events/new">Create Event</a>
+
+<div class="columns is-multiline">
+  <% events.forEach(event => { %>
+    <div class="column">
+    <%= event.name %>
+    </div>
+  <% }) %>
+
+</div>

@@ -15,7 +15,7 @@ function createSession(req, res) {
       console.log(req.session);
       req.session.userId = user.id;
       console.log(req.session.userId);
-      return res.redirect('/');
+      return res.redirect(`/users/${user.id}`);
     });
 }
 
