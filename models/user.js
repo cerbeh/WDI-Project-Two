@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     secondName: String,
     DOB: Date,
     interests: String,
-    image: String
+    image: { type: String, patter: /^https?:\/\/.+/}
   }
 },{
   eventCreator: {type: Boolean},

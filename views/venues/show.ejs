@@ -1,13 +1,22 @@
 <h2><%= venue.name %></h2>
-
-<img src="<%= venue.image %>" alt="<%= venue.name %>">
-
-<p>
-  <%= venue.description %>
-</p>
-
-<a href="/venues/<%= venue._id %>/edit">Edit</a>
-<form action="/venues/<%= venue.id %>" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button name="button">Delete</button>
-</form>
+<div class="columns is-multiline">
+  <div class="column">
+    <img src="<%= venue.image %>" alt="<%= venue.name %>">
+  </div>
+  <div class="column">
+    <p>
+      <%= venue.description %>
+    </p>
+    <div class="field is-grouped">
+      <a href="/venues/<%= venue._id %>/edit">Edit</a>
+      <form action="/venues/<%= venue.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button name="button">Delete</button>
+      </form>
+    </div>
+  </div>
+  <div class="column">
+    <h3>Comments:</h3>
+    
+  </div>
+</div>

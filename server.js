@@ -10,13 +10,27 @@ const databaseURI ='mongodb://localhost/WDI-Project-Two';
 mongoose.connect(databaseURI);
 
 const app = express();
+
+/*
+######################
+#####Local Imports####
+######################
+*/
+
 const router = require('./config/routes');
+const User = require('./models/user');
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(ejsLayouts);
 
 app.use(express.static(`${__dirname}/public`));
+
+/*
+######################
+#####Forms Config#####
+######################
+*/
 
 app.use(bodyParser.urlencoded({ extended: true}));
 
@@ -27,6 +41,30 @@ app.use(methodOverride((req) => {
     return method;
   }
 }));
+
+/*
+######################
+####Session Config####
+######################
+*/
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'ssh it\'s a secret',
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use((req, res, next) => {
+  if(!req.session.userId) return next();
+  User
+    .findById(req.session.userId)
+    .populate({path: 'pictures', populate: {path: 'creator'}})
+    .then((user) =>{
+      res.locals.currentUser = user;
+      res.locals.isLoggedIn = true;
+      next();
+    });
+});
 
 app.use(router);
 

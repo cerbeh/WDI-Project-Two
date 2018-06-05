@@ -60,6 +60,36 @@ function venueDelete(req, res) {
     });
 }
 
+/*
+##########################
+###Comments Controllers###
+##########################
+*/
+
+function commentCreate(req, res, next) {
+  Venue
+    .findById(req.params.id)
+    .then(venue => {
+      venue.comments.push(req.body);
+
+      return venue.save();
+    })
+    .then(venue => res.redirect(`venues/${venue._id}`))
+    .catch(next);
+}
+
+function commentDelete(req, res, next) {
+  Venue
+    .findById(req.params.id)
+    .then(venue => {
+      const comment = venue.comments.id(req.params.commentId);
+      comment.remove();
+      return venue.save();
+    })
+    .then(venue => res.redirect(`venues/${venue._id}`))
+    .catch(next);
+}
+
 module.exports = {
   index: venueIndex,
   new: venueNew,
@@ -67,5 +97,7 @@ module.exports = {
   show: venueShow,
   edit: venueEdit,
   update: venueUpdate,
-  delete: venueDelete
+  delete: venueDelete,
+  createComment: commentCreate,
+  deleteComment: commentDelete
 };

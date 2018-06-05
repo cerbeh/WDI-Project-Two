@@ -13,13 +13,16 @@ router.get('/', (req, res) => res.render('index', {
 
 /*
 #####################################
-#########Users Log in Routes#########
+#######Users Log in/out Routes#######
 #####################################
 */
 
 router.route('/login')
   .get(sessionsController.new)
   .post(sessionsController.create);
+
+router.route('/logout')
+  .get(sessionsController.delete);
 
 /*
 #####################################

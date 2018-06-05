@@ -1,26 +1,30 @@
-<h2>User Profile Page</h2>
 
 <div class="columns is-multiline is-mobile">
   <div class="column">
+    <h2>User Profile Page</h2>
     <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
   </div>
-  <div class="columns">
+  <div class="columns is-multiline">
       <ul>
         <li>
-          <div class="column is-one-third">
+          <div class="column is-one-third is-offset-one-third">
             Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%>
           </div>
         </li>
         <li>
-          <div class="column is-one-third">
+          <div class="column is-one-third is-offset-one-third">
             Date of Birth: <%= user.profile['DOB']%>
           </div>
         </li>
         <li>
-          <div class="column is-one-third">
+          <div class="column is-one-third is-offset-one-third">
             Interests: <%= user.profile['interests']%>
           </div>
         </li>
       </ul>
+      <% console.log(user.id); %>
+      <% if (locals.isLoggedIn && locals.currentUser.id === user.id) { %>
+        <a href="/users/<%= user.id %>/edit">Edit</a>
+      <% } %>
   </div>
 </div>
