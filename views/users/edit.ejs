@@ -40,7 +40,8 @@
               <div class="field">
                 <div class="control">
                   <%console.log(user.profile);%>
-                  <textarea name="profile.interests" rows="10" columns="80"><%= user.profile['element'] %></textarea>
+                  <%console.log(element);%>
+                  <textarea name="profile.interests" rows="10" columns="80"><%= user.profile[element] %></textarea>
                 </div>
               </div>
             </div>
