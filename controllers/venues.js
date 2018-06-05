@@ -50,16 +50,6 @@ function venueUpdate(req, res) {
     });
 }
 
-// function beanbagsUpdate(req, res){
-//  BeanBag
-//    .findById(req.params.id)
-//    .update(req.body)
-//    .exec()
-//    .then((beanbag) => {
-//      return res.redirect(`/beanbags/${req.params.id}`);
-//    });
-// }
-
 function venueDelete(req, res) {
   Venue
     .findById(req.params.id)

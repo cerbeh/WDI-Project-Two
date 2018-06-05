@@ -12,7 +12,7 @@
         <div class="card-content has-background-danger">
           <div class="content">
             <h4 class="title is-4">
-              <a href="/users/<%=user._id%>"><%= user.profile['firstName'] %></a>
+              <a href="/users/<%=user._id%>"><%= user.profile['firstName'] %> <%= user.profile['secondName']%></a>
               </h4>
               <p class="user-description">
               <%= user.profile['description'] %>
