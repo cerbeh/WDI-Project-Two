@@ -1,24 +1,38 @@
 <h3>Create a new Venue</h3>
 
 <form action="/venues" method="post">
-  <% Object.keys(template).forEach(key => { %>
-    <div class="field">
-      <label class="label"><%= key.toUpperCase()%></label>
-      <div class="control">
-      <% if (key === 'description') { %>
-        <textarea name="<%= key %>" rows="10" columns="80"></textarea>
-        <% } else { %>
-          <input type="text" class="input" name="<%= key %>">
-        <% } %>
-      </div>
-    </div>
-  <% }) %>
-  <div class="field is-grouped">
-    <div class="control">
-      <button class="button is-link">Submit</button>
-    </div>
-    <div class="control">
-      <button class="button is-text">Cancel</button>
-    </div>
+
+<div class="field">
+  <label class="label">Venue Name</label>
+  <input type="text" name="name" class="input">
+</div>
+<div class="field">
+  <label class="label">Venue Location</label>
+  <input type="text" name="location" class="input">
+</div>
+<div class="field">
+  <label class="label">Venue Image</label>
+  <input type="text" name="image" class="input">
+</div>
+<div class="field">
+  <label class="label">Venue Description</label>
+  <textarea name="description" rows="8" cols="80"></textarea>
+</div>
+<div class="field">
+  <label class="label">Venue Capacity</label>
+  <input type="text" name="capacity" class="input">
+</div>
+<div class="field">
+  <label class="label">Venue Age Limit</label>
+  <input type="text" name="ageLimit" class="input">
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link">Submit</button>
   </div>
+  <div class="control">
+    <button class="button is-text">Cancel</button>
+  </div>
+</div>
 </form>

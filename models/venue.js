@@ -4,15 +4,15 @@ const venueSchema = new mongoose.Schema({
 
   name: {type: String, required: true},
   capacity: {type: Number, required: true},
-  location: {type: String, required: true},
   image: String,
   description: String,
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   ageLimit: {type: Number, require: true},
   comments: [{
     content: { type: String, required: true }
   }],
   events: [],
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  location: {type: String, required: true}
 },{
   timestamps: true
 });
