@@ -5,8 +5,7 @@
 <div class="columns is-multiline">
   <% events.forEach(event => { %>
     <div class="column">
-    <%= event.name %>
+    <a href="/events/<%=event._id%>"><%= event.name %></a>
     </div>
   <% }) %>
-
 </div>

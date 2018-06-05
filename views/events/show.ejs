@@ -1,2 +1,37 @@
 <h2>Event Page</h2>
 <% console.log(event); %>
+
+<h2><%= event.name %></h2>
+<div class="columns is-multiline">
+  <div class="column">
+    <img src="<%= event.image %>" alt="<%= event.name %>">
+  </div>
+  <div class="column">
+    <p>
+      <%= event.description %>
+    </p>
+    <% if (locals.isLoggedIn) { %>
+      <div class="field is-grouped">
+        <a href="/events/<%= event._id %>/edit">Edit</a>
+        <form action="/events/<%= event.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button name="button">Delete</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+  <div class="column">
+    <h3>Comments:</h3>
+    <ul>
+      <% event.comments.forEach(comment => { %>
+        <li><%= comment.content %></li>
+      <% }) %>
+    </ul>
+    <% if (locals.isLoggedIn) { %>
+      <form method="POST" action="/events/<%= event._id %>/comments">
+        <textarea name="content" required></textarea>
+        <button>Submit</button>
+      </form>
+    <% } %>
+  </div>
+</div>

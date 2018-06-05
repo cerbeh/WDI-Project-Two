@@ -98,6 +98,11 @@ router.route('/events/:id')
 // router.route('/events/:id/edit')
 //  .get(eventController.edit);
 
+router.route('/events/:id/comments')
+  .post(eventController.createComment);
+
+router.route('events/:id/comments/:commentId')
+  .delete(eventController.deleteComment);
 
 
 

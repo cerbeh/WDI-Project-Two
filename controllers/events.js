@@ -31,9 +31,41 @@ function eventShow(req, res) {
     });
 }
 
+/*
+##########################
+###Comments Controllers###
+##########################
+*/
+
+function commentCreate(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .then(event => {
+      event.comments.push(req.body);
+      return event.save();
+    })
+    .then(event=> res.redirect(`/events/${event._id}`))
+    .catch(next);
+}
+
+function commentDelete(req, res, next) {
+  Event
+    .findById(req.params.id)
+    .then(event => {
+      const comment = event.comments.id(req.params.commentId);
+      comment.remove();
+      return event.save();
+    })
+    .then(event => res.redirect(`/events/${event._id}`))
+    .catch(next);
+}
+
+
 module.exports = {
   index: eventIndex,
   new: eventNew,
   create: eventCreate,
-  show: eventShow
+  show: eventShow,
+  createComment: commentCreate,
+  deleteComment: commentDelete
 };
