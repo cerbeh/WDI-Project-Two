@@ -15,6 +15,8 @@ function venueNew(req, res) {
 }
 
 function venueCreate(req, res) {
+  const venueData = req.body;
+  venueData['creator'] = res.locals.currentUser.id;
   Venue
     .create(req.body)
     .then((venue) => {
@@ -25,6 +27,7 @@ function venueCreate(req, res) {
 function venueShow(req, res) {
   Venue
     .findById(req.params.id)
+    .populate('creator')
     .exec()
     .then((venue) => {
       res.render('venues/show', {venue});
