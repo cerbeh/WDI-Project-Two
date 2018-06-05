@@ -65,6 +65,10 @@ router.route('/venues/:id')
   .delete(venueController.delete);
 router.route('/venues/:id/edit')
   .get(venueController.edit);
+router.route('/venues/:id/comments')
+  .post(venueController.createComment);
+router.route('venues/:id/comments/:commentId')
+  .delete(venueController.deleteComment);
 
 
 

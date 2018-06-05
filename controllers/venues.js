@@ -71,10 +71,9 @@ function commentCreate(req, res, next) {
     .findById(req.params.id)
     .then(venue => {
       venue.comments.push(req.body);
-
       return venue.save();
     })
-    .then(venue => res.redirect(`venues/${venue._id}`))
+    .then(venue=> res.redirect(`/venues/${venue._id}`))
     .catch(next);
 }
 
@@ -86,7 +85,7 @@ function commentDelete(req, res, next) {
       comment.remove();
       return venue.save();
     })
-    .then(venue => res.redirect(`venues/${venue._id}`))
+    .then(venue => res.redirect(`/venues/${venue._id}`))
     .catch(next);
 }
 

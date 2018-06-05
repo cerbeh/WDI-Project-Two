@@ -17,6 +17,14 @@
   </div>
   <div class="column">
     <h3>Comments:</h3>
-    
+    <ul>
+      <% venue.comments.forEach(comment => { %>
+        <li><%= comment.content %></li>
+      <% }) %>
+    </ul>
+    <form method="POST" action="/venues/<%= venue._id %>/comments">
+      <textarea name="content" required></textarea>
+      <button>Submit</button>
+    </form>
   </div>
 </div>
