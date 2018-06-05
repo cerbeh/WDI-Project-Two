@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
     DOB: Date,
     interests: String,
     image: { type: String, patter: /^https?:\/\/.+/}
-  }
+  },
+  events: []
 },{
   eventCreator: {type: Boolean},
   timestamps: true

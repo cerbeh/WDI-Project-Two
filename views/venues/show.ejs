@@ -7,13 +7,15 @@
     <p>
       <%= venue.description %>
     </p>
-    <div class="field is-grouped">
-      <a href="/venues/<%= venue._id %>/edit">Edit</a>
-      <form action="/venues/<%= venue.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button name="button">Delete</button>
-      </form>
-    </div>
+    <% if (locals.isLoggedIn) { %>
+      <div class="field is-grouped">
+        <a href="/venues/<%= venue._id %>/edit">Edit</a>
+        <form action="/venues/<%= venue.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button name="button">Delete</button>
+        </form>
+      </div>
+    <% } %>
   </div>
   <div class="column">
     <h3>Comments:</h3>
@@ -22,9 +24,11 @@
         <li><%= comment.content %></li>
       <% }) %>
     </ul>
-    <form method="POST" action="/venues/<%= venue._id %>/comments">
-      <textarea name="content" required></textarea>
-      <button>Submit</button>
-    </form>
+    <% if (locals.isLoggedIn) { %>
+      <form method="POST" action="/venues/<%= venue._id %>/comments">
+        <textarea name="content" required></textarea>
+        <button>Submit</button>
+      </form>
+    <% } %>
   </div>
 </div>

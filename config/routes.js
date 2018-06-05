@@ -70,7 +70,11 @@ router.route('/venues/:id/comments')
 router.route('venues/:id/comments/:commentId')
   .delete(venueController.deleteComment);
 
-
+/*
+#####################################
+##########Event Page Routes##########
+#####################################
+*/
 
 
 

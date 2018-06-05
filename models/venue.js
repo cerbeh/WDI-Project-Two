@@ -7,11 +7,13 @@ const venueSchema = new mongoose.Schema({
   location: {type: String, required: true},
   image: String,
   description: String,
+  ageLimit: {type: Number, require: true},
   comments: [{
     content: { type: String, required: true }
-  }]
+  }],
+  events: [],
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 },{
-  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   timestamps: true
 });
 

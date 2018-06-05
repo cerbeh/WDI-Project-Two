@@ -18,6 +18,9 @@
         <a href="/logout" class="navbar-item">Log out</a>
       <% } else { %>
         <a href="/login" class="navbar-item">Log in</a>
+        <a href="/registration" class="navbar-item">
+        New User
+        </a>
       <% } %>
     </div>
     <div class="navbar-end">
@@ -30,10 +33,6 @@
       <% if (locals.isLoggedIn) { %>
         <a href="/venues/new" class="navbar-item">
         Add a venue
-        </a>
-      <% } else { %>
-        <a href="/registration" class="navbar-item">
-        New User
         </a>
       <% } %>
     </div>
