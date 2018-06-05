@@ -4,6 +4,7 @@ const router = express.Router();
 const venueController = require('../controllers/venues');
 const registrationsController = require('../controllers/registrations');
 const usersController = require('../controllers/users');
+const sessionsController = require('../controllers/sessions');
 
 //Remember this line needs to still be made to have the homepage look shiny and something.
 router.get('/', (req, res) => res.render('index', {
@@ -12,7 +13,17 @@ router.get('/', (req, res) => res.render('index', {
 
 /*
 #####################################
-###########Users Page Routes#########
+#########Users Log in Routes#########
+#####################################
+*/
+
+router.route('/login')
+  .get(sessionsController.new)
+  .post(sessionsController.create);
+
+/*
+#####################################
+##########Users Page Routes##########
 #####################################
 */
 

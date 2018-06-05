@@ -12,6 +12,12 @@
   </div>
 
   <div class="navbar-menu" id="navMenu">
+    <div class="navbar-start">
+      <% if (locals.isLoggedIn) {%>
+        Hi <%= locals.user.username %>
+      <% } %>
+      <a href="/login" class="navbar-item">Log in</a>
+    </div>
     <div class="navbar-end">
       <a href="/venues" class="navbar-item">
         Venues

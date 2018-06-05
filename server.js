@@ -3,6 +3,7 @@ const ejsLayouts     = require('express-ejs-layouts');
 const bodyParser     = require('body-parser');
 const methodOverride = require('method-override');
 const mongoose       = require('mongoose');
+const session        = require('express-session');
 
 const databaseURI ='mongodb://localhost/WDI-Project-Two';
 
