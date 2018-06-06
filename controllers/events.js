@@ -1,4 +1,5 @@
 const Event = require('../models/event');
+const Venue = require('../models/venue');
 
 function eventIndex(req, res) {
   Event
@@ -14,12 +15,22 @@ function eventNew(req, res) {
   res.render('events/create', {template});
 }
 
-function eventCreate(req, res) {
+function eventCreate(req, res, next) {
   const eventData = req.body;
   eventData['creator'] = res.locals.currentUser.id;
-  Event
-    .create(req.body)
+
+  Event.create(eventData)
     .then((event) => {
+      Venue
+        .findById(event.venue)
+        .then((venue) =>{
+          console.log(event);
+          console.log(venue);
+          venue.events.push(event.id);
+          venue.save();
+          console.log(venue);
+          next();
+        });
       res.redirect(`events/${event._id}`);
     });
 }
@@ -27,6 +38,7 @@ function eventCreate(req, res) {
 function eventShow(req, res) {
   Event
     .findById(req.params.id)
+    .populate('venue')
     .exec()
     .then((event) => {
       res.render('events/show', {event});
@@ -76,8 +88,11 @@ function eventAttending(req, res) {
   Event
     .findById(req.params.id)
     .then(event => {
-      event.attendees.push(res.locals.currentUser.id);
+      const user = res.locals.currentUser;
+      event.attendees.push(res.locals.currentUser);
       event.save();
+      user.eventsAttending.push(event);
+      user.save();
       res.redirect(`/events/${event._id}`);
     });
 }

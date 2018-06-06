@@ -18,4 +18,8 @@ const eventSchema = new mongoose.Schema({
 
 //There will be a pre-save here for checking age limits against venue age limit
 
+// eventSchema.pre('save', function(next) {
+//   if()
+// });
+
 module.exports = mongoose.model('Event', eventSchema);

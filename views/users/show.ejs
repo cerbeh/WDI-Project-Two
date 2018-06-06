@@ -2,7 +2,12 @@
 <div class="columns is-multiline is-mobile">
   <div class="column">
     <h2>User Profile Page</h2>
-    <%= user.venues %>
+    <h3>Venues</h3>
+    <h2><% user.venues.forEach(key =>{%>
+      <ul>
+        <li><a href="../venues/<%=key.id%>"><%= key.name %></a></li>
+      </ul>
+    <%})%>
     <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
   </div>
   <div class="columns is-multiline">

@@ -11,7 +11,7 @@ const venueSchema = new mongoose.Schema({
   comments: [{
     content: { type: String, required: true }
   }],
-  events: [],
+  events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}],
   location: {type: String, required: true}
 },{
   timestamps: true

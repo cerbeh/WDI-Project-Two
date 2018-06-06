@@ -1,6 +1,6 @@
 <ul>
   <li><h2>Venue: <%= venue.name %></h2></li>
-
+  <li>Owner: <a href="../users/<%=venue.creator.id%>"><%= venue.creator.username %></a></li>
 </ul>
 <div class="columns is-multiline">
   <div class="column">
