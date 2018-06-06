@@ -1,11 +1,29 @@
 <h2>Event Index</h2>
 
-<a href="/events/new">Create Event</a>
+<% if (locals.currentUser['venues'].length > 0) { %>
+  <a href="/events/new">Create Event</a>
+<% } %>
 
 <div class="columns is-multiline">
   <% events.forEach(event => { %>
-    <div class="column">
-    <a href="/events/<%=event._id%>"><%= event.name %></a>
+    <div class="column is-one-third-desktop is-half-tablet">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="<%= event.image %>" alt="<%= event.name %>">
+          </figure>
+        </div>
+        <div class="card-content has-background-danger">
+          <div class="content">
+            <h4 class="title is-4">
+              <a href="/events/<%=event._id%>"><%= event.name %></a>
+              </h4>
+              <p class="venue-description">
+              <%= event.description %>
+              </p>
+          </div>
+        </div>
+      </div>
     </div>
   <% }) %>
 </div>

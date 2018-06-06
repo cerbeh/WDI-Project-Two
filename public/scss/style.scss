@@ -1,5 +1,6 @@
 body {
   background: red;
+  font-family: 'Exo 2', sans-serif;
 }
 a.test {
   color: papayawhip;
@@ -24,3 +25,18 @@ p.venue-description {
   overflow: hidden;
   white-space: nowrap;
 }
+
+.is-vertical-center {
+  display: flex;
+  align-items: center;
+  //flex-direction: column;
+  justify-content: space-between;
+}
+.user-details {
+  font-size: 20px;
+}
+// ul.profile-details {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+// }

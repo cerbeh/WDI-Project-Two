@@ -13,6 +13,7 @@ function userShow(req, res) {
   User
     .findById(req.params.id)
     .populate('venues')
+    .populate('eventsAttending')
     .exec()
     .then(user => {
       res.render('users/show', {user});

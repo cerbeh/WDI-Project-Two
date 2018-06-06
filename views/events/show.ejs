@@ -1,10 +1,30 @@
-<h2>Event Page</h2>
+<div class="columns is-multiline is-centered">
+  <div class="column is-four-fifths-desktop box">
+    <h2>Event Page</h2>
+  </div>
+  <div class="column is-two-fifths-desktop box">
+        <img src="<%= event.image %>" alt="<%= event.name %>">
+  </div>
+  <div class="column is-two-fifths-desktop box is-vertical-center user-details">
+    <ul>
+      <li><h2><%= event.name %></h2></li>
+      <li>Venue: <a href="../venues/<%= event.venue.id %>"><%= event.venue.name %></a></li>
+      <li>Host: <a href="../users/<%= event.creator.id %>"><%= event.creator.profile['firstName'] %> <%= event.creator.profile['usersController']%></a></li>
+      <li>Age Restriction: <%= event.venue.ageLimit %></li>
+    </ul>
+  </div>
+  <div class="column is-four-fifths-desktop box">
+    <p>Attending:
+      <% event.attendees.forEach(key => { %>
+      <a href="/users/<%=key.id %>"><%= key.profile.firstName %> <%= key.profile.secondName %></a>
+      <% }) %>
+      </p>
+      <p>Slots Taken: <%= event.attendees.length %>/<%= event.venue.capacity%></p>
+  </div>
+</div>
 
-<h2><%= event.name %></h2>
-<h2><a href="../venues/<%= event.venue.id %>"><%= event.venue.name %></a></h2>
 <div class="columns is-multiline">
   <div class="column is-half-desktop">
-    <img src="<%= event.image %>" alt="<%= event.name %>">
   </div>
   <div class="column">
     <p>
@@ -36,16 +56,12 @@
     <% } %>
   </div>
   <div class="column">
-    <form action="/events/<%= event._id %>/attending" method="post">
-      <button name="attending">Attending</button>
-    </form>
-    <div class="level">
-      <ul>
-        <% event.attendees.forEach(key => { %>
-          <li><%= key.profile.firstName %><%= key.profile.secondName %>
-        <% }) %> </li>
-        <li>Word</li>
-      </ul>
-    </div>
+    <% if (locals.isLoggedIn) { %>
+      <% if (event.canAttend(locals.currentUser)) {%>
+        <form action="/events/<%= event._id %>/attending" method="post">
+        <button name="attending" class="button">Attend</button>
+        </form>
+        <% } %>
+    <% } %>
   </div>
 </div>

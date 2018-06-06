@@ -40,6 +40,7 @@ function eventShow(req, res) {
     .findById(req.params.id)
     .populate('venue')
     .populate('attendees')
+    .populate('creator')
     .exec()
     .then((event) => {
       res.render('events/show', {event});

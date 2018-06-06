@@ -1,39 +1,51 @@
 
-<div class="columns is-multiline is-mobile">
-  <div class="column">
-    <h2>User Profile Page</h2>
-    <h3>Venues</h3>
-    <h2><% user.venues.forEach(key =>{%>
-      <ul>
-        <li><a href="../venues/<%=key.id%>"><%= key.name %></a></li>
+<div class="columns is-multiline is-centered">
+  <div class="column is-one-third-desktop box">
+      <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
+    </div>
+    <div class="column is-one-third-desktop box is-vertical-center user-details">
+      <ul class="profile">
+        <li><h2><%= user.username %> Profile:</h2></li>
+        <li><h3>Venues:
+        <% if (user.venues.length > 0) { %>
+          <% user.venues.forEach(key =>{%>
+            <a href="../venues/<%=key.id%>"><%= key.name %>,</a>
+            <%})%>
+        <% } else { %>
+        User has no venues.
+        <% } %> </h3></li>
+        <li>Events Attending: <% user.eventsAttending.forEach(key => { %>
+          <a href="../events/<%= key.id %>"><%= key.name %></a>
+          <% }) %></li>
+          <li>Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%></li>
+          <li>Date of Birth: <%= user.profile['DOB']%></li>
       </ul>
-    <%})%>
-    <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
-  </div>
-  <div class="columns is-multiline">
+    </div>
+    <div class="column is-two-thirds-desktop box">
       <ul>
-        <li>
-          <div class="column is-one-third is-offset-one-third">
-            Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%>
-          </div>
-        </li>
-        <li>
-          <div class="column is-one-third is-offset-one-third">
-            Date of Birth: <%= user.profile['DOB']%>
-          </div>
-        </li>
-        <li>
-          <div class="column is-one-third is-offset-one-third">
-            Interests: <%= user.profile['interests']%>
-          </div>
-        </li>
+        <li>About Me: </li>
+        <li><%= user.profile['interests']%></li>
       </ul>
       <% if (locals.isLoggedIn && locals.currentUser.id === user.id) { %>
-        <a href="/users/<%= user.id %>/edit">Edit</a>
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="control">
+                <a href="/users/<%= user.id %>/edit" class="button">Edit</a>
+              </div>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <div class="control">
+                <form action="/users/<%= user.id %>" method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button name="button" class="button">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </nav>
       <% } %>
-      <form action="/users/<%= user.id %>" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button name="button">Delete</button>
-      </form>
-  </div>
+    </div>
 </div>

@@ -16,10 +16,32 @@ const eventSchema = new mongoose.Schema({
   timestamps: true
 });
 
-//There will be a pre-save here for checking age limits against venue age limit
 
-// eventSchema.pre('save', function(next) {
-//   if()
-// });
+eventSchema.virtual('capacity')
+  .get(function () {
+    return this.venue.capacity;
+  });
+
+eventSchema.virtual('attending')
+  .get(function () {
+    return this.attendees.map(element => {
+      return element.id;
+    });
+  });
+
+// in the view you can call <% if(event.canAttend(user)){}%>
+
+eventSchema.methods.canAttend = function(user){
+  function getAge(DOB) {
+    const today = new Date();
+    const birthDate = new Date(DOB);
+    return today.getFullYear() - birthDate.getFullYear();
+  }
+  console.log(this.attending);
+
+  return !this.attending.includes(user.id) &&
+  this.attendees.length < this.capacity &&
+  getAge(user.profile['DOB']) > this.venue['ageLimit'];
+};
 
 module.exports = mongoose.model('Event', eventSchema);
