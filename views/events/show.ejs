@@ -1,7 +1,7 @@
 <h2>Event Page</h2>
 
 <h2><%= event.name %></h2>
-<h2><%= event.venue.name %></h2>
+<h2><a href="../venues/<%= event.venue.id %>"><%= event.venue.name %></a></h2>
 <div class="columns is-multiline">
   <div class="column is-half-desktop">
     <img src="<%= event.image %>" alt="<%= event.name %>">
@@ -39,5 +39,13 @@
     <form action="/events/<%= event._id %>/attending" method="post">
       <button name="attending">Attending</button>
     </form>
+    <div class="level">
+      <ul>
+        <% event.attendees.forEach(key => { %>
+          <li><%= key.profile.firstName %><%= key.profile.secondName %>
+        <% }) %> </li>
+        <li>Word</li>
+      </ul>
+    </div>
   </div>
 </div>
