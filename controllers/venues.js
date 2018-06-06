@@ -1,5 +1,4 @@
 const Venue = require('../models/venue');
-const User = require('../models/user');
 
 function venueIndex(req, res) {
   Venue
@@ -18,8 +17,6 @@ function venueNew(req, res) {
 function venueCreate(req, res) {
   const venueData = req.body;
   venueData['creator'] = res.locals.currentUser.id;
-  console.log(res.locals.currentUser);
-  console.log(req.body);
   Venue
     .create(req.body)
     .then((venue) => {

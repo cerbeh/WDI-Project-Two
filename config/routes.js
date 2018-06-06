@@ -92,9 +92,9 @@ router.route('/events/new')
   .get(eventController.new);
 
 router.route('/events/:id')
-  .get(eventController.show);
+  .get(eventController.show)
   //.put(eventController.update)
-  //.delete(eventController.delete);
+  .delete(eventController.delete);
 
 // router.route('/events/:id/edit')
 //  .get(eventController.edit);
@@ -104,6 +104,9 @@ router.route('/events/:id/comments')
 
 router.route('events/:id/comments/:commentId')
   .delete(eventController.deleteComment);
+
+router.route('/events/:id/attending')
+  .post(eventController.attend);
 
 
 

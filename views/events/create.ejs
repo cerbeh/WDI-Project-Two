@@ -12,10 +12,10 @@
   <div class="field is-horizontal">
       <label class="control">Venue</label>
     <div class="select is-multiple">
-      <select multiple size="3">
-        <option value="venueOne">Venue</option>
-        <option value="venueTwo">Venue</option>
-        <option value="venueThree">Venue</option>
+      <select multiple size="<% locals.currentUser.venues.length%>" name="venue">
+        <% locals.currentUser.venues.forEach(venue => { %>
+          <option value="<%=venue %>"><%= venue %></option>
+        <% }) %>
       </select>
     </div>
   </div>

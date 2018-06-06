@@ -15,6 +15,8 @@ function eventNew(req, res) {
 }
 
 function eventCreate(req, res) {
+  const eventData = req.body;
+  eventData['creator'] = res.locals.currentUser.id;
   Event
     .create(req.body)
     .then((event) => {
@@ -28,6 +30,16 @@ function eventShow(req, res) {
     .exec()
     .then((event) => {
       res.render('events/show', {event});
+    });
+}
+
+function eventDelete(req, res) {
+  Event
+    .findById(req.params.id)
+    .exec()
+    .then(event => {
+      event.remove();
+      return res.redirect('/events');
     });
 }
 
@@ -60,12 +72,23 @@ function commentDelete(req, res, next) {
     .catch(next);
 }
 
+function eventAttending(req, res) {
+  Event
+    .findById(req.params.id)
+    .then(event => {
+      event.attendees.push(res.locals.currentUser.id);
+      event.save();
+      res.redirect(`/events/${event._id}`);
+    });
+}
 
 module.exports = {
   index: eventIndex,
   new: eventNew,
   create: eventCreate,
   show: eventShow,
+  delete: eventDelete,
   createComment: commentCreate,
-  deleteComment: commentDelete
+  deleteComment: commentDelete,
+  attend: eventAttending
 };

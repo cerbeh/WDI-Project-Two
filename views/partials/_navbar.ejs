@@ -16,7 +16,6 @@
       <% if (locals.isLoggedIn) {%>
         <a href="/users/<%=locals.currentUser._id%>" class="navbar-item">Hi <%= locals.currentUser.username %></a>
         <a href="/logout" class="navbar-item">Log out</a>
-        <% console.log(currentUser.venues); %>
       <% } else { %>
         <a href="/login" class="navbar-item">Log in</a>
         <a href="/registration" class="navbar-item">

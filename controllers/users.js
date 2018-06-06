@@ -12,6 +12,7 @@ function userIndex(req, res) {
 function userShow(req, res) {
   User
     .findById(req.params.id)
+    .populate('venues')
     .exec()
     .then(user => {
       res.render('users/show', {user});

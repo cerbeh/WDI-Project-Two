@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema({
   venues: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Venue'}],
   eventsAttending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}]
 },{
-  eventCreator: {type: Boolean},
   timestamps: true
 });
 

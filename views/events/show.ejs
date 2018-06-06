@@ -2,7 +2,7 @@
 
 <h2><%= event.name %></h2>
 <div class="columns is-multiline">
-  <div class="column">
+  <div class="column is-half-desktop">
     <img src="<%= event.image %>" alt="<%= event.name %>">
   </div>
   <div class="column">
@@ -24,6 +24,7 @@
     <ul>
       <% event.comments.forEach(comment => { %>
         <li><%= comment.content %></li>
+        <li><%= comment.creator %></li>
       <% }) %>
     </ul>
     <% if (locals.isLoggedIn) { %>
@@ -32,5 +33,10 @@
         <button>Submit</button>
       </form>
     <% } %>
+  </div>
+  <div class="column">
+    <form action="/events/<%= event._id %>/attending" method="post">
+      <button name="attending">Attending</button>
+    </form>
   </div>
 </div>
