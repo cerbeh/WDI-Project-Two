@@ -41,6 +41,7 @@
   <div class="column is-two-thirds-desktop box">
     <h3>Comments:</h3>
     <ul>
+      <% console.log(venue.comments) %>
       <% venue.comments.forEach(comment => { %>
         <li><%= comment.content %></li>
       <% }) %>

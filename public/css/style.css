@@ -1,5 +1,5 @@
 body {
-  background: red;
+  background: slateGrey;
   font-family: 'Exo 2', sans-serif; }
 
 a.test {
@@ -28,9 +28,16 @@ p.venue-description {
 .is-vertical-center {
   display: flex;
   align-items: center;
-  justify-content: space-between; }
+  justify-content: space-between;
+  background-color: #aacfc7; }
 
 .user-details {
   font-size: 20px; }
+
+.description-box {
+  background-color: #4f4968; }
+
+.container-decoration {
+  background-color: #ecfac4; }
 
 /*# sourceMappingURL=style.css.map */

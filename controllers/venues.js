@@ -32,6 +32,7 @@ function venueShow(req, res) {
     .findById(req.params.id)
     .populate('creator')
     .populate('events')
+    .populate('comments')
     .exec()
     .then((venue) => {
       res.render('venues/show', {venue});

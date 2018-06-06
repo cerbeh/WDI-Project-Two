@@ -1,5 +1,5 @@
 body {
-  background: red;
+  background: slateGrey;
   font-family: 'Exo 2', sans-serif;
 }
 a.test {
@@ -31,10 +31,19 @@ p.venue-description {
   align-items: center;
   //flex-direction: column;
   justify-content: space-between;
+  background-color:rgb(170,207,199);
 }
 .user-details {
   font-size: 20px;
 }
+.description-box {
+  background-color: rgb(79, 73, 104);
+}
+
+.container-decoration {
+  background-color: rgb(236, 250, 196);
+}
+
 // ul.profile-details {
 //   display: flex;
 //   flex-direction: column;

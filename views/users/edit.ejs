@@ -52,9 +52,9 @@
       </div>
     </div>
   <% } else if(key === 'password') { %>
-    <input type="password" class="input" name="<%= key %>">
+    <input type="password" class="input" name="<%= key %>" required>
     <label class="label">PASSWORD CONFIRMATION</label>
-    <input type="password" class="input" name="passwordConfirmation">
+    <input type="password" class="input" name="passwordConfirmation" required>
     <% } else if (key === 'username' || key === 'email'){ %>
       <input type="text" class="input" name="<%= key %>" value="<%= user[key] %>">
   <% } %>
