@@ -23,14 +23,9 @@ function venueCreate(req, res) {
   Venue
     .create(req.body)
     .then((venue) => {
-      const venueOwner = res.locals.currentUser;
-      venueOwner.venues.push(venue.id);
-      // User
-      //   .findOne({username: res.locals.currentUser})
-      //   .then(user => {
-      //     user.venues.push(venue.id);
-      //       //.next();
-      //   });
+      const user = res.locals.currentUser;
+      user.venues.push(venue);
+      user.save();
       return res.redirect(`/venues/${venue._id}`);
     });
 }
