@@ -38,9 +38,20 @@ function userUpdate(req, res) {
     });
 }
 
+function userDelete(req, res) {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(user => {
+      user.remove();
+      return res.redirect('/users');
+    });
+}
+
 module.exports = {
   index: userIndex,
   show: userShow,
   edit: userEdit,
-  update: userUpdate
+  update: userUpdate,
+  delete: userDelete
 };

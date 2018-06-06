@@ -2,6 +2,7 @@
 <div class="columns is-multiline is-mobile">
   <div class="column">
     <h2>User Profile Page</h2>
+    <%= user.venues %>
     <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
   </div>
   <div class="columns is-multiline">
@@ -22,9 +23,12 @@
           </div>
         </li>
       </ul>
-      <% console.log(user.id); %>
       <% if (locals.isLoggedIn && locals.currentUser.id === user.id) { %>
         <a href="/users/<%= user.id %>/edit">Edit</a>
       <% } %>
+      <form action="/users/<%= user.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button name="button">Delete</button>
+      </form>
   </div>
 </div>

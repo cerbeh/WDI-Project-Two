@@ -1,4 +1,5 @@
 const Venue = require('../models/venue');
+const User = require('../models/user');
 
 function venueIndex(req, res) {
   Venue
@@ -17,10 +18,20 @@ function venueNew(req, res) {
 function venueCreate(req, res) {
   const venueData = req.body;
   venueData['creator'] = res.locals.currentUser.id;
+  console.log(res.locals.currentUser);
+  console.log(req.body);
   Venue
     .create(req.body)
     .then((venue) => {
-      res.redirect(`venues/${venue._id}`);
+      const venueOwner = res.locals.currentUser;
+      venueOwner.venues.push(venue.id);
+      // User
+      //   .findOne({username: res.locals.currentUser})
+      //   .then(user => {
+      //     user.venues.push(venue.id);
+      //       //.next();
+      //   });
+      return res.redirect(`/venues/${venue._id}`);
     });
 }
 

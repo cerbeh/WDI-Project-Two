@@ -55,7 +55,7 @@
     <input type="password" class="input" name="<%= key %>">
     <label class="label">PASSWORD CONFIRMATION</label>
     <input type="password" class="input" name="passwordConfirmation">
-    <% } else { %>
+    <% } else if (key === 'username' || key === 'email'){ %>
       <input type="text" class="input" name="<%= key %>" value="<%= user[key] %>">
   <% } %>
   <% }) %>

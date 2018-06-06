@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
     interests: String,
     image: { type: String, patter: /^https?:\/\/.+/}
   },
-  events: []
+  venues: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Venue'}],
+  eventsAttending: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event'}]
 },{
   eventCreator: {type: Boolean},
   timestamps: true

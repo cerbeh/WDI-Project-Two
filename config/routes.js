@@ -36,7 +36,8 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(usersController.show)
-  .put(usersController.update);
+  .put(usersController.update)
+  .delete(usersController.delete);
 
 router.route('/users/:id/edit')
   .get(usersController.edit);
