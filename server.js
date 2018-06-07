@@ -5,9 +5,9 @@ const methodOverride = require('method-override');
 const mongoose       = require('mongoose');
 const session        = require('express-session');
 
-const databaseURI ='mongodb://localhost/WDI-Project-Two';
+const { port, dbURI } = require('./config/enviroment');
 
-mongoose.connect(databaseURI);
+mongoose.connect(dbURI);
 
 const app = express();
 
@@ -68,4 +68,4 @@ app.use((req, res, next) => {
 
 app.use(router);
 
-app.listen(4000, () => console.log('Express is listening on port:4000'));
+app.listen(port, () => console.log(`Express is listening on port: ${port}`));
