@@ -16,19 +16,23 @@
         <% } else { %>
         <%= user.profile['firstName'] %> has no venues.
         <% } %> </h3></li>
-        <li>Events Attending: <% user.eventsAttending.forEach(key => { %>
-          <a href="../events/<%= key.id %>"><%= key.name %>, </a>
-          <% }) %></li>
-          <% if (locals.isLoggedIn && locals.currentUser.id !== user.id) { %> <li>Shared Events:
-            <% locals.currentUser.eventsAttending.forEach(key => { %>
-              <% user.eventsAttending.forEach(element => { %>
-                <% if (key.id === element.id) { %>
-                  <a href="../events/<%= key.id %>"><%= key.name %> </a>
-                <% } %>
-              <% }) %>
-            <% }) %>
-          <% } %></li>
-          <li>Date of Birth: <%= user.profile['DOB']%></li>
+        <li>Events Attending:
+          <% if (user.eventsAttending.length === 0) { %>
+            <%= user.profile.firstName %> is not coming out to play.
+          <% } else { %>
+            <% user.eventsAttending.forEach(key => { %>
+              <a href="../events/<%= key.id %>"><%= key.name %>, </a>
+              <% }) %></li>
+              <% if (locals.isLoggedIn && locals.currentUser.id !== user.id) { %>
+                <li>Shared Events: <% locals.currentUser.eventsAttending.forEach(key => { %>
+                <% user.eventsAttending.forEach(element => { %>
+                  <% if (key.id === element.id) { %>
+                    <a href="../events/<%= key.id %>"><%= key.name %> </a>
+                    <% } %>
+                  <% }) %>
+                <% }) %>
+              <% } %></li>
+          <% }%>
       </ul>
     </div>
     <div class="column is-four-fifths-desktop box description-box">

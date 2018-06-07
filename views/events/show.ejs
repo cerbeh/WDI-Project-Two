@@ -40,7 +40,10 @@
       <a href="/users/<%=key.id %>"><%= key.profile.firstName %> <%= key.profile.secondName %>, </a>
       <% }) %>
       </p>
-      <p>Slots Taken: <%= event.attendees.length %>/<%= event.venue.capacity%></p>
+      <p>Slots Taken: <%= event.attendees.length %>/<%= event.venue.capacity%>.
+      <% if (event.attendees.length === event.venue.capacity) { %>
+        This event how now sold out!
+      <% } %> </p>
       <% if (locals.isLoggedIn) { %>
         <% if (event.canAttend(locals.currentUser)) {%>
           <form action="/events/<%= event._id %>/attending" method="post">
@@ -48,7 +51,6 @@
           <button name="attending" class="button"><i class="fas fa-thumbs-up"></i></button>
           </form>
           <% } %>
-          <% console.log(event.attendees); %>
           <% event.attendees.forEach(key => { %>
             <% if (key.id === currentUser.id) { %>
               <p>Great News! You are going to <%= event.name %></p>

@@ -16,6 +16,11 @@
       <% if (locals.isLoggedIn) {%>
         <a href="/users/<%=locals.currentUser._id%>" class="navbar-item">Hi <%= locals.currentUser.username %></a>
         <a href="/logout" class="navbar-item">Log out</a>
+        <p class="navbar-item">Events Coming Up:</p>
+        <% locals.currentUser['eventsAttending'].forEach(key => { %>
+          <% console.log(key); %>
+          <a href="/events/<%=key.id%>" class="navbar-item"><%= key.name %></a>
+        <% }) %>
       <% } else { %>
         <a href="/login" class="navbar-item">Log in</a>
         <a href="/registration" class="navbar-item">
@@ -25,19 +30,14 @@
     </div>
     <div class="navbar-end">
       <a href="/venues" class="navbar-item">
-        Venues
+        Places to be
       </a>
       <a href="/users" class="navbar-item">
-        Users
+        Socialites
       </a>
       <a href="/events" class="navbar-item">
-        Events
+        Gatherings
       </a>
-      <% if (locals.isLoggedIn) { %>
-        <a href="/venues/new" class="navbar-item">
-        Add a venue
-        </a>
-      <% } %>
     </div>
   </div>
 </nav>

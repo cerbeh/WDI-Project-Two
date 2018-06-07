@@ -9,7 +9,7 @@ const eventController = require('../controllers/events');
 
 //Remember this line needs to still be made to have the homepage look shiny and something.
 router.get('/', (req, res) => res.render('index', {
-  venue: 'name'
+  isHomepage: true
 }));
 
 /*

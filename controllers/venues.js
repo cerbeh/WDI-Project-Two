@@ -3,6 +3,7 @@ const Venue = require('../models/venue');
 function venueIndex(req, res) {
   Venue
     .find()
+    .populate('creator')
     .exec()
     .then((venues) => {
       res.render('venues/index', {venues});

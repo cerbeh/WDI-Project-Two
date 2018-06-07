@@ -1,13 +1,19 @@
-<h2>Event Index</h2>
+<div class="columns is-multiline is-centered">
+  <div class="column is-11 page-head box">
+    <h2 class="header">Gatherings</h2>
+    <% if (locals.isLoggedIn) { %>
+      <% if (locals.currentUser['venues'].length > 0) { %>
+        <a href="/events/new">Create Event</a>
+        <% } else { %>
+          <p>Want to host an event? Head on over to the <a href="/venues">venues</a> page to get started. Then you can come back and make the next big gathering!</p>
+          <% }%>
+    <% } %>
+  </div>
 
-<% if (locals.isLoggedIn && locals.currentUser['venues'].length > 0) { %>
-  <a href="/events/new">Create Event</a>
-<% } %>
 
-<div class="columns is-multiline">
   <% events.forEach(event => { %>
     <div class="column is-one-third-desktop is-half-tablet">
-      <div class="card">
+      <div class="card details-box">
         <div class="card-image">
           <figure class="image is-4by3">
             <img src="<%= event.image %>" alt="<%= event.name %>">

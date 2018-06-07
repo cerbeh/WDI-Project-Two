@@ -5,10 +5,11 @@ body {
 
 .container a:hover, .container a:visited, .container a:link, .container a:active {
   text-decoration: none !important;
-  color: white !important;
+  color: rgb(79, 73,104) !important;
 }
 
 h2.header {
+  font-size: 40px;
   padding: 10px;
   margin: 5px;
 }

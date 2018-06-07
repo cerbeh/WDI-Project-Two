@@ -24,7 +24,7 @@
         <div class="level-left">
           <div class="level-item">
             <div class="control">
-              <a href="/venues/<%= venue.id %>/edit" class="button">Edit</a>
+              <a href="/venues/<%= venue.id %>/edit" class="button button-details">Edit</a>
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="control">
               <form action="/venues/<%= venue.id %>" method="post">
                 <input type="hidden" name="_method" value="delete">
-                <button name="button" class="button">Delete</button>
+                <button name="button" class="button button-details">Delete</button>
               </form>
             </div>
           </div>
