@@ -2,17 +2,13 @@ body {
   background: slateGrey;
   font-family: 'Exo 2', sans-serif; }
 
-a.test {
-  color: papayawhip;
-  background-color: chartreuse;
-  border: 2px solid saddleBrown; }
+.container a:hover, .container a:visited, .container a:link, .container a:active {
+  text-decoration: none !important;
+  color: white !important; }
 
 h2.header {
   padding: 10px;
   margin: 5px; }
-
-body div.container {
-  background: peachpuff; }
 
 textarea {
   resize: none;
@@ -54,6 +50,9 @@ p.venue-description {
   background-color: slateGrey; }
 
 .details-box {
+  background-color: #aacfc7; }
+
+.nav-box {
   background-color: #aacfc7; }
 
 /*# sourceMappingURL=style.css.map */

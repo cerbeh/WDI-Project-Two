@@ -5,7 +5,7 @@
   <div class="column is-two-fifths-desktop box picture-box">
         <img src="<%= event.image %>" alt="<%= event.name %>">
   </div>
-  <div class="column is-two-fifths-desktop box user-details">
+  <div class="column is-two-fifths-desktop box user-details details-box">
     <ul>
       <li><h2><%= event.name %></h2></li>
       <li>Venue: <a href="../venues/<%= event.venue.id %>"><%= event.venue.name %></a></li>
@@ -34,10 +34,10 @@
       </nav>
     <% } %>
   </div>
-  <div class="column is-four-fifths-desktop box">
+  <div class="column is-four-fifths-desktop box details-box">
     <p>Attending:
       <% event.attendees.forEach(key => { %>
-      <a href="/users/<%=key.id %>"><%= key.profile.firstName %> <%= key.profile.secondName %></a>
+      <a href="/users/<%=key.id %>"><%= key.profile.firstName %> <%= key.profile.secondName %>, </a>
       <% }) %>
       </p>
       <p>Slots Taken: <%= event.attendees.length %>/<%= event.venue.capacity%></p>
@@ -48,6 +48,12 @@
           <button name="attending" class="button"><i class="fas fa-thumbs-up"></i></button>
           </form>
           <% } %>
+          <% console.log(event.attendees); %>
+          <% event.attendees.forEach(key => { %>
+            <% if (key.id === currentUser.id) { %>
+              <p>Great News! You are going to <%= event.name %></p>
+            <% }%>
+          <% }) %>
       <% } %>
   </div>
   <div class="column is-four-fifths-desktop box description-box">
