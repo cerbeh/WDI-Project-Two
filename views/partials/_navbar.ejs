@@ -16,7 +16,7 @@
       <% if (locals.isLoggedIn) {%>
         <a href="/users/<%=locals.currentUser._id%>" class="navbar-item">Hi <%= locals.currentUser.username %></a>
         <a href="/logout" class="navbar-item">Log out</a>
-        <p class="navbar-item">Events Coming Up:</p>
+        <p class="navbar-item">Upcoming Gatherings:</p>
         <% locals.currentUser['eventsAttending'].forEach(key => { %>
           <% console.log(key); %>
           <a href="/events/<%=key.id%>" class="navbar-item"><%= key.name %></a>
