@@ -5,11 +5,11 @@ const methodOverride = require('method-override');
 const mongoose       = require('mongoose');
 const session        = require('express-session');
 
+const app = express();
 const { port, dbURI } = require('./config/enviroment');
 
 mongoose.connect(dbURI);
 
-const app = express();
 
 /*
 ######################
