@@ -19,7 +19,15 @@
         <li>Events Attending: <% user.eventsAttending.forEach(key => { %>
           <a href="../events/<%= key.id %>"><%= key.name %></a>
           <% }) %></li>
-          <li>Name: <%= user.profile['firstName']%> <%= user.profile['secondName']%></li>
+          <% if (locals.isLoggedIn && locals.currentUser.id !== user.id) { %> <li>Shared Events:
+            <% locals.currentUser.eventsAttending.forEach(key => { %>
+              <% user.eventsAttending.forEach(element => { %>
+                <% if (key.id === element.id) { %>
+                  <a href="../events/<%= key.id %>"><%= key.name %> </a>
+                <% } %>
+              <% }) %>
+            <% }) %>
+          <% } %></li>
           <li>Date of Birth: <%= user.profile['DOB']%></li>
       </ul>
     </div>
