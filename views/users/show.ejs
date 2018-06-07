@@ -1,17 +1,20 @@
 <div class="columns is-multiline is-centered">
-  <div class="column is-one-third-desktop box">
+  <div class="column is-four-fifths-desktop box page-head">
+    <h2><%= user.username %></h2>
+  </div>
+  <div class="column is-two-fifths-desktop box picture-box">
       <img src="<%= user.profile['image']%>" alt="<%=user.profile['firstName']%>">
     </div>
-    <div class="column is-one-third-desktop box is-vertical-center user-details">
+    <div class="column is-two-fifths-desktop box is-vertical-center user-details details-box">
       <ul class="profile">
-        <li><h2><%= user.username %> Profile:</h2></li>
+        <li>Name: <%= user.profile['firstName'] %> <%= user.profile['secondName'] %></li>
         <li><h3>Venues:
         <% if (user.venues.length > 0) { %>
           <% user.venues.forEach(key =>{%>
             <a href="../venues/<%=key.id%>"><%= key.name %>,</a>
             <%})%>
         <% } else { %>
-        User has no venues.
+        <%= user.profile['firstName'] %> has no venues.
         <% } %> </h3></li>
         <li>Events Attending: <% user.eventsAttending.forEach(key => { %>
           <a href="../events/<%= key.id %>"><%= key.name %></a>
@@ -20,7 +23,7 @@
           <li>Date of Birth: <%= user.profile['DOB']%></li>
       </ul>
     </div>
-    <div class="column is-two-thirds-desktop box">
+    <div class="column is-four-fifths-desktop box description-box">
       <ul>
         <li>About Me: </li>
         <li><%= user.profile['interests']%></li>
@@ -30,7 +33,7 @@
           <div class="level-left">
             <div class="level-item">
               <div class="control">
-                <a href="/users/<%= user.id %>/edit" class="button">Edit</a>
+                <a href="/users/<%= user.id %>/edit" class="button">Edit Profile</a>
               </div>
             </div>
           </div>
@@ -39,7 +42,7 @@
               <div class="control">
                 <form action="/users/<%= user.id %>" method="post">
                   <input type="hidden" name="_method" value="delete">
-                  <button name="button" class="button">Delete</button>
+                  <button name="button" class="button">Delete Account</button>
                 </form>
               </div>
             </div>

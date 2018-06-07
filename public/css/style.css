@@ -20,7 +20,7 @@ textarea {
   font-size: 20px; }
 
 p.venue-description {
-  height: 50px;
+  height: 20px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap; }
@@ -28,16 +28,32 @@ p.venue-description {
 .is-vertical-center {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: #aacfc7; }
+  justify-content: space-between; }
 
 .user-details {
   font-size: 20px; }
 
 .description-box {
-  background-color: #4f4968; }
+  background-color: #aacfc7; }
 
 .container-decoration {
   background-color: #ecfac4; }
+
+.page-head {
+  text-align: center;
+  color: #ecfac4;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-top: 20px;
+  background-color: slateGrey; }
+
+.picture-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: slateGrey; }
+
+.details-box {
+  background-color: #aacfc7; }
 
 /*# sourceMappingURL=style.css.map */

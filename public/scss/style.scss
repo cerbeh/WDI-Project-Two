@@ -20,7 +20,7 @@ textarea {
   font-size: 20px;
 }
 p.venue-description {
-  height: 50px;
+  height: 20px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -31,17 +31,36 @@ p.venue-description {
   align-items: center;
   //flex-direction: column;
   justify-content: space-between;
-  background-color:rgb(170,207,199);
 }
 .user-details {
   font-size: 20px;
 }
 .description-box {
-  background-color: rgb(79, 73, 104);
+  background-color: rgb(170,207,199);
 }
 
 .container-decoration {
   background-color: rgb(236, 250, 196);
+}
+
+.page-head {
+  text-align: center;
+  color: rgb(236, 250, 196);
+  font-size: 30px;
+  font-weight: bolder;
+  margin-top: 20px;
+  background-color: slateGrey;
+}
+
+.picture-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: slateGrey;
+}
+
+.details-box {
+  background-color: rgb(170, 207, 199);
 }
 
 // ul.profile-details {

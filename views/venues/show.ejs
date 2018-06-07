@@ -1,8 +1,11 @@
 <div class="columns is-multiline is-centered">
-  <div class="column is-one-third-desktop box">
+  <div class="column is-four-fifths-desktop box page-head">
+    <h2>Venue Page</h2>
+  </div>
+  <div class="column is-two-fifths-desktop box picture-box">
     <img src="<%= venue.image %>" alt="<%= venue.name %>">
   </div>
-  <div class="column is-one-third-desktop box is-vertical-center user-details">
+  <div class="column is-two-fifths-desktop box is-vertical-center user-details details-box">
     <ul>
       <li><h2>Venue: <%= venue.name %></h2></li>
       <li>Owner: <a href="../users/<%=venue.creator.id%>"><%= venue.creator.username %></a></li>
@@ -12,7 +15,7 @@
         <% }) %></li>
     </ul>
   </div>
-  <div class="column is-two-thirds-desktop box">
+  <div class="column is-four-fifths-desktop box description-box">
     <p>
       <%= venue.description %>
     </p>
@@ -38,7 +41,7 @@
       </nav>
     <% } %>
   </div>
-  <div class="column is-two-thirds-desktop box">
+  <div class="column is-three-fifths-desktop box">
     <h3>Comments:</h3>
     <ul>
       <% console.log(venue.comments) %>
@@ -46,11 +49,16 @@
         <li><%= comment.content %></li>
       <% }) %>
     </ul>
-    <% if (locals.isLoggedIn) { %>
-      <form method="POST" action="/venues/<%= venue._id %>/comments">
-        <textarea name="content" required></textarea>
-        <button>Submit</button>
-      </form>
-    <% } %>
   </div>
+    <div class="column is-one-fifth-desktop box">
+      <form method="POST" action="/venues/<%= venue._id %>/comments">
+        <label class="label">Write a comment:</label>
+        <textarea name="content" required></textarea>
+        <% if (locals.isLoggedIn) { %>
+          <button>Submit</button>
+          </form>
+          <% } else { %>
+            <p>You must be logged in to post</p>
+            <% }%>
+    </div>
 </div>
