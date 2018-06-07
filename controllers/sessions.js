@@ -12,15 +12,13 @@ function createSession(req, res) {
       if(!user || !user.validatePassword(req.body.password)){
         return res.status(401).render('sessions/new', {message: 'Incorrect Email or Password'});
       }
-      console.log(req.session);
       req.session.userId = user.id;
-      console.log(req.session.userId);
       return res.redirect(`/users/${user.id}`);
     });
 }
 
 function deleteSession(req, res) {
-  return req.session.regenerate(() => res.redirect('/'));
+  return req.session.regenerate(() => res.redirect('/login'));
 }
 
 module.exports = {
