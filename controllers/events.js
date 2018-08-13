@@ -24,11 +24,8 @@ function eventCreate(req, res, next) {
       Venue
         .findById(event.venue)
         .then((venue) =>{
-          console.log(event);
-          console.log(venue);
           venue.events.push(event.id);
           venue.save();
-          console.log(venue);
           next();
         });
       res.redirect(`events/${event._id}`);
